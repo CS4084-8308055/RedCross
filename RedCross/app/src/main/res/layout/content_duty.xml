@@ -5,15 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:background="@color/background"
-    tools:context=".MainActivity"
-    tools:showIn="@layout/activity_main">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".DutyActivity"
+    tools:showIn="@layout/activity_duty">
 
-<android.support.v7.widget.RecyclerView
-    android:id="@+id/recycler_view"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
-
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/duty_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </android.support.constraint.ConstraintLayout>
