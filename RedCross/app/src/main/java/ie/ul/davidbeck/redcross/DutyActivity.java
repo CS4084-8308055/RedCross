@@ -1,5 +1,6 @@
 package ie.ul.davidbeck.redcross;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,12 +19,15 @@ public class DutyActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setHasFixedSize(true);
+        Intent receivedIntent = getIntent();
+        String docId = receivedIntent.getStringExtra(Constants.EXTRA_DOC_ID);
 
-        CaseAdapter caseAdapter = new CaseAdapter();
-        recyclerView.setAdapter(caseAdapter);
+        RecyclerView dutyRecyclerView = findViewById(R.id.duty_recycler_view);
+        dutyRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        dutyRecyclerView.setHasFixedSize(true);
+
+        CaseAdapter caseAdapter = new CaseAdapter(docId);
+        dutyRecyclerView.setAdapter(caseAdapter);
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);

@@ -3,7 +3,6 @@ package ie.ul.davidbeck.redcross;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -51,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View view = getLayoutInflater().inflate(R.layout.addduty_dialog, null, false);
         builder.setView(view);
-        builder.setTitle("Add a movie quote");
+        builder.setTitle("Create Duty");
         final TextView quoteEditText = view.findViewById(R.id.dialog_location_edittext);
         builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
             @Override
@@ -68,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 //TODO: add back in after authentication
 //                duty.put(Constants.KEY_UID, FirebaseAuth.getInstance().getCurrentUser().getUid());
                 duty.put(Constants.KEY_DUTYDATE, dutyDate);
-                FirebaseFirestore.getInstance().collection(Constants.COLLECTION_PATH).add(duty);
+                FirebaseFirestore.getInstance().collection(Constants.COLLECTION_ROOT).add(duty);
 
             }
         });

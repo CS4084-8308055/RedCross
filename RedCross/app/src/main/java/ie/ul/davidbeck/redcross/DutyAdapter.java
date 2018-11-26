@@ -1,5 +1,7 @@
 package ie.ul.davidbeck.redcross;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -15,10 +17,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -36,7 +36,7 @@ public class DutyAdapter extends RecyclerView.Adapter<DutyAdapter.DutyViewHolder
             e.printStackTrace();
         }
         CollectionReference dutiesCollectionRef = FirebaseFirestore.getInstance().
-                collection(Constants.COLLECTION_PATH);
+                collection(Constants.COLLECTION_ROOT);
 
         dutiesCollectionRef.whereEqualTo("DutyDate", dutyDate).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -85,6 +85,16 @@ public class DutyAdapter extends RecyclerView.Adapter<DutyAdapter.DutyViewHolder
             super(itemView);
             mLocationTextView = itemView.findViewById(R.id.itemview_location);
             mDutyDateTextView = itemView.findViewById(R.id.itemview_dutydate);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    DocumentSnapshot ds = mDutySnapshots.get(getAdapterPosition());
+                    Context c = view.getContext();
+                    Intent intent = new Intent(c, DutyActivity.class);
+                    intent.putExtra(Constants.EXTRA_DOC_ID, ds.getId());
+                    c.startActivity(intent);
+                }
+            });
         }
     }
 }

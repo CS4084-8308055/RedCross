@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">Red Cross Duty Manager</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_duty">DutyActivity</string>
+    <string name="title_activity_duty">Case Management</string>
+
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_up">Register New User</string>
+    <string name="invalid_email">This email address is invalid</string>
+    <string name="invalid_password">Password is too short</string>
 </resources>
