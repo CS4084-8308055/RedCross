@@ -67,7 +67,7 @@ public class DutyAdapter extends RecyclerView.Adapter<DutyAdapter.DutyViewHolder
         }
         DocumentSnapshot ds = mDutySnapshots.get(i);
         String location = (String)ds.get(Constants.KEY_LOCATION);
-        String dutyDate = ((Date)ds.get(Constants.KEY_DUTYDATE)).toString();
+        String dutyDate = sdf.format((Date)ds.get(Constants.KEY_DUTYDATE));
         dutyViewHolder.mDutyDateTextView.setText(dutyDate);
         dutyViewHolder.mLocationTextView.setText(location);
     }
