@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@color/toolbarBackground"
     android:orientation="vertical"
     android:padding="30dp"
     tools:context=".LoginActivity">
@@ -18,7 +18,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/app_name"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@android:color/white"
+        android:textColor="@color/toolbarText"
         android:textSize="30sp"/>
 
     <AutoCompleteTextView
@@ -31,10 +31,10 @@
         android:maxLines="1"
         android:shadowColor="@android:color/white"
         android:singleLine="true"
-        android:textColor="@android:color/white"
-        android:textColorHighlight="@android:color/white"
-        android:textColorHint="@android:color/white"
-        android:textColorLink="@android:color/white"/>
+        android:textColor="@color/toolbarText"
+        android:textColorHighlight="@color/toolbarText"
+        android:textColorHint="@color/toolbarText"
+        android:textColorLink="@color/toolbarText"/>
 
     <EditText
         android:id="@+id/password_edittext"
@@ -48,10 +48,10 @@
         android:maxLines="1"
         android:shadowColor="@android:color/white"
         android:singleLine="true"
-        android:textColor="@android:color/white"
-        android:textColorHighlight="@android:color/white"
-        android:textColorHint="@android:color/white"
-        android:textColorLink="@android:color/white"/>
+        android:textColor="@color/toolbarText"
+        android:textColorHighlight="@color/toolbarText"
+        android:textColorHint="@color/toolbarText"
+        android:textColorLink="@color/toolbarText"/>
 
     <Button
         style="?android:textAppearanceSmall"
