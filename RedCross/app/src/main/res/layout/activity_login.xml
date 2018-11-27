@@ -22,7 +22,7 @@
         android:textSize="30sp"/>
 
     <AutoCompleteTextView
-        android:id="@+id/email_edittext"
+        android:id="@+id/station_edittext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
