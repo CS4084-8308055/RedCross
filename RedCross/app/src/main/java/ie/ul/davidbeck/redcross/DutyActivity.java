@@ -21,7 +21,9 @@ public class DutyActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Intent receivedIntent = getIntent();
-        final String docId = receivedIntent.getStringExtra(Constants.EXTRA_DOC_ID);
+        Bundle extras = receivedIntent.getExtras();
+        final String docId = extras.getString(Constants.EXTRA_DOC_ID);
+        final String callsign = extras.getString(Constants.EXTRA_CALLSIGN);
 
         RecyclerView dutyRecyclerView = findViewById(R.id.duty_recycler_view);
         dutyRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -37,7 +39,10 @@ public class DutyActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Context c = view.getContext();
                 Intent intent = new Intent(c, CaseDetailsActivity.class);
-                intent.putExtra(Constants.EXTRA_DOC_ID, docId);
+                Bundle extras = new Bundle();
+                extras.putString(Constants.EXTRA_DOC_ID, docId);
+                extras.putString(Constants.EXTRA_CALLSIGN, callsign);
+                intent.putExtras(extras);
                 c.startActivity(intent);
             }
         });

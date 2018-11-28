@@ -25,7 +25,9 @@ public class CaseDetailsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Intent receivedIntent = getIntent();
-        final String docId = receivedIntent.getStringExtra(Constants.EXTRA_DOC_ID);
+        Bundle extras = receivedIntent.getExtras();
+        final String docId = extras.getString(Constants.EXTRA_DOC_ID);
+        final String callsign = extras.getString(Constants.EXTRA_CALLSIGN);
 
 
         mStation = findViewById(R.id.detail_view_treating_station);
@@ -33,14 +35,12 @@ public class CaseDetailsActivity extends AppCompatActivity {
         mAge = findViewById(R.id.detail_view_age);
         mComplaint = findViewById(R.id.detail_view_complaint);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        mStation.setText(callsign);
+
+    }
+    public void handleCritical(View v){
+    }
+    public void handleNonCritical(View v){
     }
 
 }

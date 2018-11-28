@@ -22,8 +22,7 @@
         android:textSize="20sp"
         android:layout_margin="20dp"
         android:gravity="center"
-        android:layout_height="wrap_content"
-        android:text="Treating Station goes here"/>
+        android:layout_height="wrap_content"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -36,8 +35,7 @@
         android:textSize="20sp"
         android:layout_margin="20dp"
         android:gravity="center"
-        android:layout_height="wrap_content"
-        android:text="Name goes here"/>
+        android:layout_height="wrap_content"/>?
 
     <TextView
         android:layout_width="match_parent"
@@ -51,8 +49,7 @@
         android:layout_margin="20dp"
         android:inputType="number"
         android:gravity="center"
-        android:layout_height="wrap_content"
-        android:text="Age goes here"/>
+        android:layout_height="wrap_content"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -64,8 +61,7 @@
         android:textSize="20sp"
         android:layout_margin="20dp"
         android:gravity="center"
-        android:layout_height="wrap_content"
-        android:text="Complaint goes here"/>
+        android:layout_height="wrap_content"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

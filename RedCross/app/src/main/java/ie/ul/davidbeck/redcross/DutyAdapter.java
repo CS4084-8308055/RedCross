@@ -2,6 +2,7 @@ package ie.ul.davidbeck.redcross;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -26,10 +27,12 @@ import java.util.List;
 public class DutyAdapter extends RecyclerView.Adapter<DutyAdapter.DutyViewHolder> {
 
     private List<DocumentSnapshot> mDutySnapshots = new ArrayList<>();
+    private String mCallsign;
 
-    public DutyAdapter(){
+    public DutyAdapter(String callsign){
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Date dutyDate = null;
+        mCallsign = callsign;
         try {
             dutyDate = sdf.parse(sdf.format(new Date()));
         } catch (ParseException e) {
@@ -91,7 +94,10 @@ public class DutyAdapter extends RecyclerView.Adapter<DutyAdapter.DutyViewHolder
                     DocumentSnapshot ds = mDutySnapshots.get(getAdapterPosition());
                     Context c = view.getContext();
                     Intent intent = new Intent(c, DutyActivity.class);
-                    intent.putExtra(Constants.EXTRA_DOC_ID, ds.getId());
+                    Bundle extras = new Bundle();
+                    extras.putString(Constants.EXTRA_DOC_ID, ds.getId());
+                    extras.putString(Constants.EXTRA_CALLSIGN, mCallsign);
+                    intent.putExtras(extras);
                     c.startActivity(intent);
                 }
             });

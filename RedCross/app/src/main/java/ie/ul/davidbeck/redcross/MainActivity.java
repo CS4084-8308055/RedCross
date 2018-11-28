@@ -31,13 +31,13 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        final String callsign = getIntent().getStringExtra(Constants.EXTRA_CALLSIGN);
-
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        final String callsign = uid.substring(0, uid.indexOf("@"));
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
-        DutyAdapter dutyAdapter = new DutyAdapter();
+        DutyAdapter dutyAdapter = new DutyAdapter(callsign);
         recyclerView.setAdapter(dutyAdapter);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -67,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 Map<String, Object> duty = new HashMap<>();
                 duty.put(Constants.KEY_LOCATION, quoteEditText.getText().toString());
-                //TODO: add back in after authentication
                 duty.put(Constants.KEY_CREATEDBY, callsign);
                 duty.put(Constants.KEY_DUTYDATE, dutyDate);
                 FirebaseFirestore.getInstance().collection(Constants.COLLECTION_ROOT).add(duty);
