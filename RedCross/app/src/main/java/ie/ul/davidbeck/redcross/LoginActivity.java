@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void handleSignIn(View view){
-        String station = mStationEditText.getText().toString();
+        final String station = mStationEditText.getText().toString();
         String password = mPasswordEditText.getText().toString();
 
         if (station.length() < 2 ){
@@ -49,6 +49,7 @@ public class LoginActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()){
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                intent.putExtra(Constants.EXTRA_CALLSIGN, station);
                                 startActivity(intent);
                             } else{
                                 Toast.makeText(LoginActivity.this, "Login failed", Toast.LENGTH_SHORT).show();

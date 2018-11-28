@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.ParseException;
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        final String callsign = getIntent().getStringExtra(Constants.EXTRA_CALLSIGN);
+
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
@@ -41,12 +44,12 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showAddDialog();
+                showAddDialog(callsign);
             }
         });
     }
 
-    private void showAddDialog() {
+    private void showAddDialog(final String callsign) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View view = getLayoutInflater().inflate(R.layout.addduty_dialog, null, false);
         builder.setView(view);
@@ -65,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 Map<String, Object> duty = new HashMap<>();
                 duty.put(Constants.KEY_LOCATION, quoteEditText.getText().toString());
                 //TODO: add back in after authentication
-//                duty.put(Constants.KEY_UID, FirebaseAuth.getInstance().getCurrentUser().getUid());
+                duty.put(Constants.KEY_CREATEDBY, callsign);
                 duty.put(Constants.KEY_DUTYDATE, dutyDate);
                 FirebaseFirestore.getInstance().collection(Constants.COLLECTION_ROOT).add(duty);
 

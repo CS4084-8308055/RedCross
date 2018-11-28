@@ -6,10 +6,12 @@ public class Constants {
     public static final String COLLECTION_CASE = "Cases";
     public static final String KEY_LOCATION = "Location";
     public static final String KEY_DUTYDATE = "DutyDate";
+    public static final String KEY_CREATEDBY = "CreatedBy";
     public static final String KEY_TREATING_STATION = "TreatingStation";
     public static final String KEY_COMPLAINT = "Complaint";
     public static final String KEY_TIME_STARTED = "TimeStarted";
     public static final String EMAIL_DOMAIN = "@limerick.redcross";
 
     public static final String EXTRA_DOC_ID = "document_id";
+    public static final String EXTRA_CALLSIGN = "call_sign";
 }

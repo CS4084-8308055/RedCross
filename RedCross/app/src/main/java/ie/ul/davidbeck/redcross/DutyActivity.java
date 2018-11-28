@@ -1,5 +1,6 @@
 package ie.ul.davidbeck.redcross;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -20,7 +21,7 @@ public class DutyActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Intent receivedIntent = getIntent();
-        String docId = receivedIntent.getStringExtra(Constants.EXTRA_DOC_ID);
+        final String docId = receivedIntent.getStringExtra(Constants.EXTRA_DOC_ID);
 
         RecyclerView dutyRecyclerView = findViewById(R.id.duty_recycler_view);
         dutyRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -34,8 +35,10 @@ public class DutyActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Context c = view.getContext();
+                Intent intent = new Intent(c, CaseDetailsActivity.class);
+                intent.putExtra(Constants.EXTRA_DOC_ID, docId);
+                c.startActivity(intent);
             }
         });
     }
