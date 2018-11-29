@@ -18,4 +18,10 @@ public class Constants {
 
     public static final String EXTRA_DOC_ID = "document_id";
     public static final String EXTRA_CALLSIGN = "call_sign";
+    public static final String KEY_SYMPTOMS = "Symptoms";
+    public static final String KEY_ALLERGIES = "Allergies";
+    public static final String KEY_MEDICATIONS = "Medications";
+    public static final String KEY_HISTORY = "History";
+    public static final String KEY_ORAL = "Oral";
+    public static final String KEY_EVENTS = "Events";
 }
