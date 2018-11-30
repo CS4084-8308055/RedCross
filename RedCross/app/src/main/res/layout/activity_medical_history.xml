@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MedicalHistoryActivity">
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/detail_view_symptoms"
+            android:layout_width="match_parent"
+            android:textColor="@android:color/black"
+            android:textColorHint="@color/toolbarText"
+            android:textSize="20sp"
+            android:hint="Signs and Symptoms"
+            android:layout_margin="20dp"
+            android:gravity="left"
+            android:layout_height="wrap_content"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/detail_view_allergies"
+            android:layout_width="match_parent"
+            android:textColor="@android:color/black"
+            android:textColorHint="@color/toolbarText"
+            android:textSize="20sp"
+            android:hint="Allergies"
+            android:layout_margin="20dp"
+            android:gravity="left"
+            android:layout_height="wrap_content"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/detail_view_medications"
+            android:layout_width="match_parent"
+            android:textColor="@android:color/black"
+            android:textColorHint="@color/toolbarText"
+            android:textSize="20sp"
+            android:hint="Allergies"
+            android:layout_margin="20dp"
+            android:gravity="left"
+            android:layout_height="wrap_content"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/detail_view_history"
+            android:layout_width="match_parent"
+            android:textColor="@android:color/black"
+            android:textColorHint="@color/toolbarText"
+            android:textSize="20sp"
+            android:hint="Past pertinent medical history"
+            android:layout_margin="20dp"
+            android:gravity="left"
+            android:layout_height="wrap_content"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/detail_view_oral"
+            android:layout_width="match_parent"
+            android:textColor="@android:color/black"
+            android:textColorHint="@color/toolbarText"
+            android:textSize="20sp"
+            android:hint="Last Oral Intake"
+            android:layout_margin="20dp"
+            android:gravity="left"
+            android:layout_height="wrap_content"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/detail_view_events"
+            android:layout_width="match_parent"
+            android:textColor="@android:color/black"
+            android:textColorHint="@color/toolbarText"
+            android:textSize="20sp"
+            android:hint="Events leading up"
+            android:layout_margin="20dp"
+            android:gravity="left"
+            android:layout_height="wrap_content"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:onClick="handleContinue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/treatment"
+        />
+
+</LinearLayout>

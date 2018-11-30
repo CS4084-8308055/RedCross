@@ -55,6 +55,7 @@
             android:textColorHint="@color/toolbarText"
             android:textSize="20sp"
             android:hint="Age"
+            android:inputType="number"
             android:layout_margin="20dp"
             android:gravity="left"
             android:layout_height="wrap_content"/>

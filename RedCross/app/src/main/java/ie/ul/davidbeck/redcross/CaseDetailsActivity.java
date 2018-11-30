@@ -1,5 +1,6 @@
 package ie.ul.davidbeck.redcross;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
@@ -55,70 +56,59 @@ public class CaseDetailsActivity extends AppCompatActivity {
         mStation.setText(callsign);
 
     }
-    public void handleCritical(View v){
-        mNewCase.put(Constants.KEY_SYMPTOMS, "");
-        mNewCase.put(Constants.KEY_ALLERGIES, "");
-        mNewCase.put(Constants.KEY_MEDICATIONS, "");
-        mNewCase.put(Constants.KEY_HISTORY, "");
-        mNewCase.put(Constants.KEY_ORAL, "");
-        mNewCase.put(Constants.KEY_EVENTS, "");
-        writeData();
+    public void handleCritical(final View view){
+        Map<String, Object> newCase = new HashMap<>();
+
+        newCase.put(Constants.KEY_TREATING_STATION, mStation.getText().toString());
+        newCase.put(Constants.KEY_NAME, mName.getText().toString());
+        newCase.put(Constants.KEY_AGE, mAge.getText().toString());
+        newCase.put(Constants.KEY_COMPLAINT, mComplaint.getText().toString());
+        newCase.put(Constants.KEY_TIME_STARTED, new Date());
+        newCase.put(Constants.KEY_OUTCOME, "");
+        newCase.put(Constants.KEY_NEXT_STAGE, "");
+        newCase.put(Constants.KEY_SYMPTOMS, "");
+        newCase.put(Constants.KEY_ALLERGIES, "");
+        newCase.put(Constants.KEY_MEDICATIONS, "");
+        newCase.put(Constants.KEY_HISTORY, "");
+        newCase.put(Constants.KEY_ORAL, "");
+        newCase.put(Constants.KEY_EVENTS, "");
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection(Constants.COLLECTION_ROOT)
+                .document(mDocId)
+                .collection(Constants.COLLECTION_CASE)
+                .add(newCase);
         AlertDialog.Builder builder;
         builder = new AlertDialog.Builder(this);
         builder.setMessage("Call an ambulance and begin treatment immediately.")
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        // next activity
+                        callTreatment(view);
                     }
                 })
                 .show();
     }
-    public void handleNonCritical(View v){
-        showHistoryDialog();
-        writeData();
-        // next activity
+    public void handleNonCritical(View view){
+        Context c = view.getContext();
+        Intent intent = new Intent(c, MedicalHistoryActivity.class);
+        Bundle extras = new Bundle();
+        extras.putString(Constants.EXTRA_DOC_ID, mDocId);
+        extras.putString(Constants.EXTRA_CALLSIGN, mStation.getText().toString());
+        extras.putString(Constants.EXTRA_NAME, mName.getText().toString());
+        extras.putString(Constants.EXTRA_AGE, mAge.getText().toString());
+        extras.putString(Constants.EXTRA_COMPLAINT, mComplaint.getText().toString());
+        intent.putExtras(extras);
+        c.startActivity(intent);
     }
 
-    private void writeData(){
-        mNewCase.put(Constants.KEY_TREATING_STATION, mStation.getText().toString());
-        mNewCase.put(Constants.KEY_NAME, mName.getText().toString());
-        mNewCase.put(Constants.KEY_AGE, mAge.getText().toString());
-        mNewCase.put(Constants.KEY_COMPLAINT, mComplaint.getText().toString());
-        mNewCase.put(Constants.KEY_TIME_STARTED, new Date());
-        mNewCase.put(Constants.KEY_OUTCOME, "");
-        mNewCase.put(Constants.KEY_NEXT_STAGE, "");
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection(Constants.COLLECTION_ROOT)
-                .document(mDocId)
-                .collection(Constants.COLLECTION_CASE)
-                .add(mNewCase);
-
+    private void callTreatment(View view) {
+        Context c = view.getContext();
+        Intent intent = new Intent(c, ComplaintActivity.class);
+        Bundle extras = new Bundle();
+        extras.putString(Constants.EXTRA_DOC_ID, mDocId);
+        extras.putString(Constants.EXTRA_CALLSIGN, mStation.getText().toString());
+        intent.putExtras(extras);
+        c.startActivity(intent);
     }
 
-    private void showHistoryDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        View view = getLayoutInflater().inflate(R.layout.patient_details_dialog, null, false);
-        builder.setView(view);
-        builder.setTitle("Patient Details");
-        final TextView symptomsEditText = view.findViewById(R.id.dialog_symptoms_edittext);
-        final TextView allergiesEditText = view.findViewById(R.id.dialog_allergies_edittext);
-        final TextView medicationsEditText = view.findViewById(R.id.dialog_medications_edittext);
-        final TextView historyEditText = view.findViewById(R.id.dialog_history_edittext);
-        final TextView oralEditText = view.findViewById(R.id.dialog_oral_edittext);
-        final TextView eventsEditText = view.findViewById(R.id.dialog_events_edittext);
-        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                mNewCase.put(Constants.KEY_SYMPTOMS, symptomsEditText.getText().toString());
-                mNewCase.put(Constants.KEY_ALLERGIES, allergiesEditText.getText().toString());
-                mNewCase.put(Constants.KEY_MEDICATIONS, medicationsEditText.getText().toString());
-                mNewCase.put(Constants.KEY_HISTORY, historyEditText.getText().toString());
-                mNewCase.put(Constants.KEY_ORAL, oralEditText.getText().toString());
-                mNewCase.put(Constants.KEY_EVENTS, eventsEditText.getText().toString());
-
-            }
-        });
-        builder.create().show();
-    }
 
 }

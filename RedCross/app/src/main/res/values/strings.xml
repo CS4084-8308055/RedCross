@@ -13,4 +13,6 @@
     <string name="title_activity_case_details">CaseDetailsActivity</string>
     <string name="respond_no">No</string>
     <string name="respond_yes">Yes</string>
+    <string name="title_activity_complaint">ComplaintActivity</string>
+    <string name="treatment">Continue to Treatment</string>
 </resources>

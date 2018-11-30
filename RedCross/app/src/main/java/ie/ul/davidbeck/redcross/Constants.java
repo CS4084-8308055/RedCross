@@ -4,6 +4,7 @@ public class Constants {
     public static final String TAG = "RedCross";
     public static final String COLLECTION_ROOT = "Duties";
     public static final String COLLECTION_CASE = "Cases";
+    public static final String COLLECTION_COMPLAINT = "Complaints";
     public static final String KEY_LOCATION = "Location";
     public static final String KEY_DUTYDATE = "DutyDate";
     public static final String KEY_CREATEDBY = "CreatedBy";
@@ -18,6 +19,9 @@ public class Constants {
 
     public static final String EXTRA_DOC_ID = "document_id";
     public static final String EXTRA_CALLSIGN = "call_sign";
+    public static final String EXTRA_NAME = "name";
+    public static final String EXTRA_AGE = "age";
+    public static final String EXTRA_COMPLAINT = "complaint";
     public static final String KEY_SYMPTOMS = "Symptoms";
     public static final String KEY_ALLERGIES = "Allergies";
     public static final String KEY_MEDICATIONS = "Medications";
