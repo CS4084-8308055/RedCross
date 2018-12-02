@@ -1,5 +1,6 @@
 package ie.ul.davidbeck.redcross;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
@@ -72,6 +73,13 @@ public class MedicalHistoryActivity extends AppCompatActivity {
                 .document(mDocId)
                 .collection(Constants.COLLECTION_CASE)
                 .add(newCase);
+        Context c = view.getContext();
+        Intent intent = new Intent(c, ComplaintActivity.class);
+        Bundle extras = new Bundle();
+        extras.putString(Constants.EXTRA_DOC_ID, mDocId);
+        extras.putString(Constants.EXTRA_CALLSIGN, mCallsign);
+        intent.putExtras(extras);
+        c.startActivity(intent);
     }
 
 }
