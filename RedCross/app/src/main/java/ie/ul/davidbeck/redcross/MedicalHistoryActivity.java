@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Date;
@@ -69,14 +70,16 @@ public class MedicalHistoryActivity extends AppCompatActivity {
         newCase.put(Constants.KEY_ORAL, mOral.getText().toString());
         newCase.put(Constants.KEY_EVENTS, mEvents.getText().toString());
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection(Constants.COLLECTION_ROOT)
+        DocumentReference caseDocId =  db.collection(Constants.COLLECTION_ROOT)
                 .document(mDocId)
                 .collection(Constants.COLLECTION_CASE)
-                .add(newCase);
+                .document();
+        caseDocId.set(newCase);
         Context c = view.getContext();
         Intent intent = new Intent(c, ComplaintActivity.class);
         Bundle extras = new Bundle();
         extras.putString(Constants.EXTRA_DOC_ID, mDocId);
+        extras.putString(Constants.EXTRA_CASE_DOC_ID, caseDocId.getId());
         extras.putString(Constants.EXTRA_CALLSIGN, mCallsign);
         intent.putExtras(extras);
         c.startActivity(intent);

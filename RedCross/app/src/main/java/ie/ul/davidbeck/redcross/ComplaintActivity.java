@@ -2,17 +2,15 @@ package ie.ul.davidbeck.redcross;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 public class ComplaintActivity extends AppCompatActivity {
 
-    private String mDocId;
+    private String mDutyDocId;
+    private String mCaseDocId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,14 +20,15 @@ public class ComplaintActivity extends AppCompatActivity {
 
         Intent receivedIntent = getIntent();
         Bundle extras = receivedIntent.getExtras();
-        mDocId = extras.getString(Constants.EXTRA_DOC_ID);
+        mDutyDocId = extras.getString(Constants.EXTRA_DOC_ID);
+        mCaseDocId = extras.getString(Constants.EXTRA_CASE_DOC_ID);
         final String callsign = extras.getString(Constants.EXTRA_CALLSIGN);
 
         RecyclerView complaintRecyclerView = findViewById(R.id.complaint_recycler_view);
         complaintRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         complaintRecyclerView.setHasFixedSize(true);
 
-        ComplaintAdapter complaintAdapter = new ComplaintAdapter();
+        ComplaintAdapter complaintAdapter = new ComplaintAdapter(mDutyDocId, mCaseDocId, callsign);
         complaintRecyclerView.setAdapter(complaintAdapter);
 
     }

@@ -18,6 +18,8 @@ public class Constants {
     public static final String EMAIL_DOMAIN = "@limerick.redcross";
 
     public static final String EXTRA_DOC_ID = "document_id";
+    public static final String EXTRA_COMPLAINT_DOC_ID = "complaint_document_id";
+    public static final String EXTRA_CASE_DOC_ID = "case_document_id";
     public static final String EXTRA_CALLSIGN = "call_sign";
     public static final String EXTRA_NAME = "name";
     public static final String EXTRA_AGE = "age";

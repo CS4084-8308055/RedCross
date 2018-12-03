@@ -35,7 +35,11 @@
             android:name=".ComplaintActivity"
             android:label="@string/title_activity_complaint"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MedicalHistoryActivity"></activity>
+        <activity android:name=".MedicalHistoryActivity" />
+        <activity
+            android:name=".TreatmentActivity"
+            android:label="@string/title_activity_treatment"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -16,4 +16,5 @@
     <string name="title_activity_complaint">Select Complaint</string>
     <string name="treatment">Continue to Treatment</string>
     <string name="logout">Logout</string>
+    <string name="title_activity_treatment">TreatmentActivity</string>
 </resources>
