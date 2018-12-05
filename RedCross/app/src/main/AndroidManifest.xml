@@ -39,7 +39,8 @@
         <activity
             android:name=".TreatmentActivity"
             android:label="@string/title_activity_treatment"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".FinalActivity"></activity>
     </application>
 
 </manifest>

@@ -81,7 +81,9 @@ public class ComplaintAdapter extends RecyclerView.Adapter<ComplaintAdapter.Comp
                 public void onClick(View view) {
                     DocumentSnapshot ds = mComplaintSnapshots.get(getAdapterPosition());
                     Map<String, Object> complaint = new HashMap<>();
-                    complaint.put(Constants.KEY_COMPLAINT, (String)ds.get(Constants.KEY_COMPLAINT));
+                    String complaintDescription = (String)ds.get(Constants.KEY_COMPLAINT);
+                    complaint.put(Constants.KEY_COMPLAINT, complaintDescription);
+                    long firstStep = (Long)ds.get("FirstStep");
                     FirebaseFirestore db = FirebaseFirestore.getInstance();
                     db.collection(Constants.COLLECTION_ROOT).document(mDutyDocId)
                             .collection(Constants.COLLECTION_CASE).document(mCaseDocId)
@@ -92,7 +94,9 @@ public class ComplaintAdapter extends RecyclerView.Adapter<ComplaintAdapter.Comp
                     extras.putString(Constants.EXTRA_DOC_ID, mDutyDocId);
                     extras.putString(Constants.EXTRA_CASE_DOC_ID, mCaseDocId);
                     extras.putString(Constants.EXTRA_COMPLAINT_DOC_ID, ds.getId());
+                    extras.putString(Constants.EXTRA_COMPLAINT, complaintDescription);
                     extras.putString(Constants.EXTRA_CALLSIGN, mCallsign);
+                    extras.putLong(Constants.EXTRA_STEP_ID, firstStep);
                     intent.putExtras(extras);
                     c.startActivity(intent);
 

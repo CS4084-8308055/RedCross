@@ -6,57 +6,69 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/background"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".TreatmentActivity"
     tools:showIn="@layout/activity_treatment">
-    <ScrollView
-        android:id="@+id/scroller"
+    <TextView
+        android:id="@+id/itemview_treatment"
+        android:layout_margin="20dp"
+        android:textSize="20dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.33">
-        <TextView
-            android:id="@+id/itemview_treatment"
-            android:layout_margin="20dp"
-            android:textSize="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </ScrollView>
+        android:layout_height="0dip"
+        android:background="@color/toolbarBackground"
+        android:layout_weight="30"/>
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dip"
+        android:layout_margin="20dp"
+        android:background="@color/toolbarBackground"
+        android:layout_weight="30">
         <android.support.design.widget.TextInputEditText
             android:id="@+id/itemview_comment"
             android:layout_width="match_parent"
             android:textColor="@android:color/black"
             android:textColorHint="@color/toolbarText"
             android:textSize="20sp"
+            android:layout_margin="10dp"
             android:hint="Comments"
-            android:layout_margin="20dp"
+            android:focusedByDefault="false"
             android:gravity="left"
             android:layout_height="wrap_content"/>
     </android.support.design.widget.TextInputLayout>
     <TextView
         android:id="@+id/itemview_question"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:layout_height="0dip"
+        android:layout_weight="20"
+        android:textSize="25sp"
+        android:textColor="@color/highlight"
         android:layout_margin="20dp"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dip"
+        android:layout_weight="20"
         android:orientation="horizontal">
         <Button
             android:onClick="handleYes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="0dip"
+            android:layout_weight="50"
+            android:layout_marginRight="1dp"
+            android:background="@color/toolbarBackground"
+            android:textColor="@color/toolbarText"
+            android:textSize="25sp"
+            android:layout_height="match_parent"
             android:text="@string/respond_yes"
             />
         <Button
             android:onClick="handleNo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="0dip"
+            android:layout_weight="50"
+            android:layout_marginLeft="1dp"
+            android:background="@color/toolbarBackground"
+            android:textColor="@color/toolbarText"
+            android:textSize="25sp"
+            android:layout_height="match_parent"
             android:text="@string/respond_no"
             />
     </LinearLayout>

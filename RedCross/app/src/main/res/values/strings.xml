@@ -17,4 +17,9 @@
     <string name="treatment">Continue to Treatment</string>
     <string name="logout">Logout</string>
     <string name="title_activity_treatment">TreatmentActivity</string>
+    <string name="treat_on_site">Treat on Site</string>
+    <string name="remove_to_hospital">Remove to Hospital</string>
+    <string name="discharged">Discharged</string>
+    <string name="record_outcome">Record Outcome</string>
+    <string name="respondOK">OK</string>
 </resources>
