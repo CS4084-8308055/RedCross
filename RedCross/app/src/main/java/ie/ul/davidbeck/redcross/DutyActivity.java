@@ -29,7 +29,7 @@ public class DutyActivity extends AppCompatActivity {
         dutyRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         dutyRecyclerView.setHasFixedSize(true);
 
-        CaseAdapter caseAdapter = new CaseAdapter(docId);
+        CaseAdapter caseAdapter = new CaseAdapter(docId, callsign);
         dutyRecyclerView.setAdapter(caseAdapter);
 
 

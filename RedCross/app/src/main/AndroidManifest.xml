@@ -40,7 +40,11 @@
             android:name=".TreatmentActivity"
             android:label="@string/title_activity_treatment"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".FinalActivity"></activity>
+        <activity android:name=".FinalActivity" />
+        <activity
+            android:name=".CaseViewActivity"
+            android:label="@string/title_activity_case_view"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="ie.ul.davidbeck.redcross.TreatmentyActivity">
+    <item
+        android:id="@+id/action_cases"
+        android:orderInCategory="10"
+        android:title="Case List"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_logout"
+        android:orderInCategory="200"
+        android:title="Logout"
+        app:showAsAction="never" />
+</menu>

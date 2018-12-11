@@ -54,15 +54,16 @@ public class FinalActivity extends AppCompatActivity {
             }
         });
     }
-    public void handleContinue(final View view){
+    public void handleOK(final View view){
         if (mOutcome.getText().toString() == "" || mNextStage == ""){
             Toast.makeText(FinalActivity.this, "You must complete this page", Toast.LENGTH_LONG).show();
         }else {
+
             Map<String, Object> update = new HashMap<>();
 
             update.put(Constants.KEY_TIME_FINISHED, new Date());
-            update.put(Constants.KEY_OUTCOME, (String) mOutcome.getText());
-            update.put(Constants.KEY_NEXT_STAGE, "");
+            update.put(Constants.KEY_OUTCOME, mOutcome.getText().toString());
+            update.put(Constants.KEY_NEXT_STAGE, mNextStage);
             FirebaseFirestore db = FirebaseFirestore.getInstance();
             DocumentReference caseDocId = db.collection(Constants.COLLECTION_ROOT)
                     .document(mDutyDocId)

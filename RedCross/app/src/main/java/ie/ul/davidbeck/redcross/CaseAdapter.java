@@ -1,5 +1,8 @@
 package ie.ul.davidbeck.redcross;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -24,7 +27,13 @@ public class CaseAdapter extends RecyclerView.Adapter<CaseAdapter.CaseViewHolder
 
     private List<DocumentSnapshot> mCaseSnapshots = new ArrayList<>();
 
-    public CaseAdapter(String docId){
+    private String mDocId;
+    private String mCallsign;
+
+    public CaseAdapter(String docId, String callsign){
+        mDocId = docId;
+        mCallsign = callsign;
+
         CollectionReference casesCollectionRef = FirebaseFirestore.getInstance().
                 collection(Constants.COLLECTION_ROOT).document(docId).collection(Constants.COLLECTION_CASE);
         casesCollectionRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -77,6 +86,21 @@ public class CaseAdapter extends RecyclerView.Adapter<CaseAdapter.CaseViewHolder
             mTreatingStationTextView = itemView.findViewById(R.id.itemview_treatingstation);
             mComplaintTextView = itemView.findViewById(R.id.itemview_complaint);
             mTimeTextView = itemView.findViewById(R.id.itemview_time);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    DocumentSnapshot ds = mCaseSnapshots.get(getAdapterPosition());
+                    Context c = view.getContext();
+                    Intent intent = new Intent(c, CaseViewActivity.class);
+                    Bundle extras = new Bundle();
+                    extras.putString(Constants.EXTRA_DOC_ID, mDocId);
+                    extras.putString(Constants.EXTRA_CASE_DOC_ID, ds.getId());
+                    extras.putString(Constants.EXTRA_COMPLAINT, (String)mComplaintTextView.getText());
+                    extras.putString(Constants.EXTRA_CALLSIGN, mCallsign);
+                    intent.putExtras(extras);
+                    c.startActivity(intent);
+                }
+            });
         }
     }
 }
