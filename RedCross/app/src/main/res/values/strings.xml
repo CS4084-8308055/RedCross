@@ -25,4 +25,5 @@
     <string name="title_activity_case_view">CaseViewActivity</string>
     <string name="continue_treatment">Continue Treatment</string>
     <string name="view_treatment">View Treatment</string>
+    <string name="title_activity_view_treatment">View Treatment</string>
 </resources>

@@ -135,8 +135,15 @@ public class CaseViewActivity extends AppCompatActivity {
 
     }
 
-    public void handleTreatments(View view){
-        //TODO: Call the view that displays treatments
+    public void handleTreatments(final View view){
+        Context c = view.getContext();
+        Intent intent = new Intent(c, ViewTreatmentActivity.class);
+        Bundle extras = new Bundle();
+        extras.putString(Constants.EXTRA_DOC_ID, mDutyDocId);
+        extras.putString(Constants.EXTRA_CASE_DOC_ID, mCaseDocId);
+        intent.putExtras(extras);
+        c.startActivity(intent);
+
     }
 
 }

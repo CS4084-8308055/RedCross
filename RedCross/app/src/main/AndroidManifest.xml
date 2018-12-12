@@ -44,6 +44,10 @@
         <activity
             android:name=".CaseViewActivity"
             android:label="@string/title_activity_case_view"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ViewTreatmentActivity"
+            android:label="@string/title_activity_view_treatment"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
