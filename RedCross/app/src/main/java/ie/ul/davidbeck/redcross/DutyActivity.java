@@ -13,6 +13,7 @@ import android.view.View;
 
 public class DutyActivity extends AppCompatActivity {
 
+    private String mCallsign;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +25,7 @@ public class DutyActivity extends AppCompatActivity {
         Bundle extras = receivedIntent.getExtras();
         final String docId = extras.getString(Constants.EXTRA_DOC_ID);
         final String callsign = extras.getString(Constants.EXTRA_CALLSIGN);
+        mCallsign = callsign;
 
         RecyclerView dutyRecyclerView = findViewById(R.id.duty_recycler_view);
         dutyRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -48,4 +50,10 @@ public class DutyActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra(Constants.EXTRA_CALLSIGN, mCallsign);
+        startActivity(intent);
+    }
 }

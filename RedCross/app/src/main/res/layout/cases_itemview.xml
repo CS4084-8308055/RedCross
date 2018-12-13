@@ -13,7 +13,7 @@
         android:padding="6dp">
 
         <TextView
-            android:id="@+id/itemview_treatingstation"
+            android:id="@+id/itemview_complaint"
             android:maxLines="1"
             android:textSize="20sp"
             android:layout_width="match_parent"
@@ -23,13 +23,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
-                android:id="@+id/itemview_time"
+                android:id="@+id/itemview_treatingstation"
                 android:gravity="left"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/itemview_complaint"
+                android:id="@+id/itemview_time"
                 android:gravity="right"
                 android:layout_width="0dp"
                 android:layout_weight="1"

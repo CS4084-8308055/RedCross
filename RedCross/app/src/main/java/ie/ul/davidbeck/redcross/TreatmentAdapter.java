@@ -45,8 +45,8 @@ public class TreatmentAdapter extends RecyclerView.Adapter<TreatmentAdapter.Trea
                 .collection(Constants.COLLECTION_ROOT).document(dutyDocId)
                 .collection(Constants.COLLECTION_CASE).document(caseDocId)
                 .collection(Constants.COLLECTION_TREATMENT);
-        treatmentsCollectionRef.orderBy(Constants.KEY_TIME_STARTED, Query.Direction.ASCENDING);
-        treatmentsCollectionRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
+        treatmentsCollectionRef.orderBy(Constants.KEY_TIME_STARTED, Query.Direction.ASCENDING).limit(50)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                 if (e != null) {

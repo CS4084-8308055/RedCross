@@ -16,6 +16,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.SimpleDateFormat;
@@ -36,7 +37,9 @@ public class CaseAdapter extends RecyclerView.Adapter<CaseAdapter.CaseViewHolder
 
         CollectionReference casesCollectionRef = FirebaseFirestore.getInstance().
                 collection(Constants.COLLECTION_ROOT).document(docId).collection(Constants.COLLECTION_CASE);
-        casesCollectionRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
+        casesCollectionRef
+                .orderBy(Constants.KEY_TIME_STARTED, Query.Direction.DESCENDING)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                 if (e != null) {

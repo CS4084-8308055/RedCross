@@ -33,4 +33,7 @@ public class ComplaintActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+    }
 }

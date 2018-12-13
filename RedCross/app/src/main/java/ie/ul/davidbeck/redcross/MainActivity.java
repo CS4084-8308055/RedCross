@@ -1,6 +1,8 @@
 package ie.ul.davidbeck.redcross;
 
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
@@ -91,10 +93,16 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.action_logout:
                 FirebaseAuth.getInstance().signOut();
-                finish();
+                Context c = this;
+                Intent intent = new Intent(c, LoginActivity.class);
+                c.startActivity(intent);
                 return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }

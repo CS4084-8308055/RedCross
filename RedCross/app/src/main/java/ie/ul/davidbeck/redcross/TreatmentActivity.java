@@ -136,6 +136,7 @@ public class TreatmentActivity extends AppCompatActivity {
             extras.putString(Constants.EXTRA_DOC_ID, mDutyDocId);
             extras.putString(Constants.EXTRA_CASE_DOC_ID, mCaseDocId);
             extras.putString(Constants.EXTRA_COMPLAINT_DOC_ID, mComplaintDocId);
+            extras.putString(Constants.EXTRA_COMPLAINT, mComplaint);
             extras.putString(Constants.EXTRA_CALLSIGN, mCallsign);
             extras.putLong(Constants.EXTRA_STEP_ID, nextStepId);
             intent.putExtras(extras);
@@ -182,6 +183,16 @@ public class TreatmentActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public void onBackPressed() {
+        Context c = this;
+        Intent intent = new Intent(c, DutyActivity.class);
+        Bundle extras = new Bundle();
+        extras.putString(Constants.EXTRA_DOC_ID, mDutyDocId);
+        extras.putString(Constants.EXTRA_CALLSIGN, mCallsign);
+        intent.putExtras(extras);
+        c.startActivity(intent);
     }
 }
 
