@@ -45,4 +45,8 @@ public class Constants {
     public static final String EXTRA_AGE = "age";
     public static final String EXTRA_COMPLAINT = "complaint";
     public static final String EXTRA_STEP_ID = "step_id";
+    public static final String EXTRA_EDITMODE = "editmode";
+
+    public static final int SEARCH_DATE = 1;
+    public static final int SEARCH_LOCATION = 2;
 }

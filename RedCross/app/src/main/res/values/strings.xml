@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Red Cross Duty Manager</string>
+    <string name="app_name">Red Cross Duties</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_duty">Case Management</string>
 
@@ -16,13 +16,13 @@
     <string name="title_activity_complaint">Select Complaint</string>
     <string name="treatment">Continue to Treatment</string>
     <string name="logout">Logout</string>
-    <string name="title_activity_treatment">TreatmentActivity</string>
+    <string name="title_activity_treatment">Treatment</string>
     <string name="treat_on_site">Treat on Site</string>
     <string name="remove_to_hospital">Remove to Hospital</string>
     <string name="discharged">Discharged</string>
     <string name="record_outcome">Record Outcome</string>
     <string name="respondOK">OK</string>
-    <string name="title_activity_case_view">CaseViewActivity</string>
+    <string name="title_activity_case_view">View Case Details</string>
     <string name="continue_treatment">Continue Treatment</string>
     <string name="view_treatment">View Treatment</string>
     <string name="title_activity_view_treatment">View Treatment</string>

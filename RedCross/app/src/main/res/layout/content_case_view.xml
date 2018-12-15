@@ -227,6 +227,7 @@
         android:layout_below="@id/case_table"
         android:orientation="horizontal">
         <Button
+            android:id="@+id/continue_button"
             android:onClick="handleContinue"
             android:layout_width="0dip"
             android:layout_weight="50"

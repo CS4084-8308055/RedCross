@@ -29,10 +29,20 @@ public class DutyAdapter extends RecyclerView.Adapter<DutyAdapter.DutyViewHolder
     private List<DocumentSnapshot> mDutySnapshots = new ArrayList<>();
     private String mCallsign;
 
-    public DutyAdapter(String callsign){
+    public DutyAdapter(String callsign, Date searchDate, String location, int searchType){
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Date dutyDate = null;
+        Object searchKey = null;
+        String searchColumn = "";
         mCallsign = callsign;
+
+        if (searchType == Constants.SEARCH_LOCATION) {
+            searchKey = location;
+            searchColumn = "Location";
+        } else {
+            searchKey = searchDate;
+            searchColumn = "DutyDate";
+        }
         try {
             dutyDate = sdf.parse(sdf.format(new Date()));
         } catch (ParseException e) {
@@ -40,8 +50,9 @@ public class DutyAdapter extends RecyclerView.Adapter<DutyAdapter.DutyViewHolder
         }
         CollectionReference dutiesCollectionRef = FirebaseFirestore.getInstance().
                 collection(Constants.COLLECTION_ROOT);
-
-        dutiesCollectionRef.whereEqualTo("DutyDate", dutyDate).addSnapshotListener(new EventListener<QuerySnapshot>() {
+        //Temporary comment to test multiple dates
+        dutiesCollectionRef.whereEqualTo(searchColumn, searchKey).addSnapshotListener(new EventListener<QuerySnapshot>() {
+        //dutiesCollectionRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                 if (e != null) {
@@ -88,6 +99,7 @@ public class DutyAdapter extends RecyclerView.Adapter<DutyAdapter.DutyViewHolder
             super(itemView);
             mLocationTextView = itemView.findViewById(R.id.itemview_location);
             mDutyDateTextView = itemView.findViewById(R.id.itemview_dutydate);
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

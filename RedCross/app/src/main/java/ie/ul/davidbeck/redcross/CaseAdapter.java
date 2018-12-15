@@ -30,10 +30,12 @@ public class CaseAdapter extends RecyclerView.Adapter<CaseAdapter.CaseViewHolder
 
     private String mDocId;
     private String mCallsign;
+    private Boolean mEditMode;
 
-    public CaseAdapter(String docId, String callsign){
+    public CaseAdapter(String docId, String callsign, Boolean editMode){
         mDocId = docId;
         mCallsign = callsign;
+        mEditMode = editMode;
 
         CollectionReference casesCollectionRef = FirebaseFirestore.getInstance().
                 collection(Constants.COLLECTION_ROOT).document(docId).collection(Constants.COLLECTION_CASE);
@@ -100,6 +102,7 @@ public class CaseAdapter extends RecyclerView.Adapter<CaseAdapter.CaseViewHolder
                     extras.putString(Constants.EXTRA_CASE_DOC_ID, ds.getId());
                     extras.putString(Constants.EXTRA_COMPLAINT, (String)mComplaintTextView.getText());
                     extras.putString(Constants.EXTRA_CALLSIGN, mCallsign);
+                    extras.putBoolean(Constants.EXTRA_EDITMODE, mEditMode);
                     intent.putExtras(extras);
                     c.startActivity(intent);
                 }

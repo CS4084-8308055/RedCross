@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,6 +26,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.lang.Boolean.TRUE;
+
 public class CaseViewActivity extends AppCompatActivity {
 
     private String mCallsign;
@@ -33,6 +36,7 @@ public class CaseViewActivity extends AppCompatActivity {
     private String mCaseDocId;
     private String mComplaintDocId;
     private Long mStepId;
+    private Boolean mEditMode;
 
     private TextView mNameView;
     private TextView mAgeView;
@@ -62,6 +66,7 @@ public class CaseViewActivity extends AppCompatActivity {
         mCaseDocId = extras.getString(Constants.EXTRA_CASE_DOC_ID);
         mComplaint = extras.getString(Constants.EXTRA_COMPLAINT);
         mCallsign = extras.getString(Constants.EXTRA_CALLSIGN);
+        mEditMode = extras.getBoolean(Constants.EXTRA_EDITMODE, TRUE);
 
         mNameView = findViewById(R.id.name_view);
         mAgeView = findViewById(R.id.age_view);
@@ -75,6 +80,9 @@ public class CaseViewActivity extends AppCompatActivity {
         mHistoryView = findViewById(R.id.history_view);
         mOralView = findViewById(R.id.oral_view);
         mEventsView = findViewById(R.id.events_view);
+
+        Button continueButton = findViewById(R.id.continue_button);
+        continueButton.setVisibility(View.INVISIBLE);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
